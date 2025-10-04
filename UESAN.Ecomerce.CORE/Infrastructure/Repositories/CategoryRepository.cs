@@ -77,8 +77,15 @@ namespace UESAN.Ecomerce.CORE.Infrastructure.Repositories
 
         public async Task UpdateCategory(Category category)
         {
-            _context.Category.Update(category);
-            await _context.SaveChangesAsync();
+            var existingCategory = await _context.Category.FindAsync(category.Id);
+            if (existingCategory != null)
+            {
+                existingCategory.Description = category.Description;
+                existingCategory.IsActive = category.IsActive; 
+
+
+                await _context.SaveChangesAsync();
+            }
         }
 
     }
