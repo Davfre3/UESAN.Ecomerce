@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using UESAN.Ecomerce.CORE.Core.Interfaces;
+using UESAN.Ecomerce.CORE.Core.Services;
 using UESAN.Ecomerce.CORE.Infrastructure.Data;
 using UESAN.Ecomerce.CORE.Infrastructure.Repositories;
 
@@ -10,6 +11,10 @@ var _configuration = builder.Configuration;
 var connectionString = _configuration.GetConnectionString("DevConnection");
 
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
+builder.Services.AddTransient<ICategoriServices, CategoriServices>();
+builder.Services.AddScoped<IProductServices, ProductServices>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
 
 builder.Services.AddDbContext<StoreDbContext>(options =>
     options.UseSqlServer(connectionString));
