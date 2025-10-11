@@ -12,8 +12,10 @@ var connectionString = _configuration.GetConnectionString("DevConnection");
 
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 builder.Services.AddTransient<ICategoriServices, CategoriServices>();
-builder.Services.AddScoped<IProductServices, ProductServices>();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddTransient<IProductServices, ProductServices>();
+builder.Services.AddTransient<IProductRepository, ProductRepository>();
+builder.Services.AddTransient<IFavoriteRepository, FavoriteRepository>();
+builder.Services.AddTransient<IFavoriteService, FavoriteService>();
 
 
 builder.Services.AddDbContext<StoreDbContext>(options =>
