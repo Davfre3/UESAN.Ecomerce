@@ -16,6 +16,8 @@ namespace UESAN.Ecomerce.CORE.Core.DTOs
         public int? Discount { get; set; }
         public int CategoryId { get; set; }
         public bool IsActive { get; set; }
+        // Changed: include category as nested DTO for GET responses
+        public CategoriListDTO? Category { get; set; }
     }
 
     public class ProductCreateDTO
@@ -34,7 +36,8 @@ namespace UESAN.Ecomerce.CORE.Core.DTOs
         public int Id { get; set; }
         public string? Description { get; set; }
         public decimal Price { get; set; }
-        public string? CategoryName { get; set; }
+        // Changed to nested category object
+        public CategoriListDTO? Category { get; set; }
 
     }
 

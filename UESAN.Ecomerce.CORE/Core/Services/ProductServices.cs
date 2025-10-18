@@ -30,7 +30,7 @@ namespace UESAN.Ecomerce.CORE.Core.Services
                     Id = p.Id,
                     Description = p.Description,
                     Price = (decimal)p.Price,
-                    CategoryName = p.Category?.Description
+                    Category = p.Category == null ? null : new CategoriListDTO { Id = p.Category.Id, Description = p.Category.Description }
                 });
             }
 
@@ -51,7 +51,8 @@ namespace UESAN.Ecomerce.CORE.Core.Services
                 Price = (decimal)p.Price,
                 Discount = p.Discount,
                 CategoryId = (int)p.CategoryId,
-                IsActive = (bool)p.IsActive
+                IsActive = (bool)p.IsActive,
+                Category = p.Category == null ? null : new CategoriListDTO { Id = p.Category.Id, Description = p.Category.Description }
             };
         }
 
